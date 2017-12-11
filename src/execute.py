@@ -37,7 +37,7 @@ except NameError:
     # py3k has unicode by default
     pass
 else:
-    reload(sys).setdefaultencoding('utf-8')
+    reload(sys).setdefaultencoding('utf8')
     
 try:
     from ConfigParser import SafeConfigParser
