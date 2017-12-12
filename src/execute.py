@@ -36,11 +36,11 @@ try:
     reload
 except NameError:
     # py3k has unicode by default
-    pass
-else:
     unicode('data/*.dec', errors='ignore')
     unicode('data/*.enc', errors='ignore')
-    reload(sys).setdefaultencoding('utf8')
+    pass
+else:
+    reload(sys).setdefaultencoding('utf-8')
 try:
     from ConfigParser import SafeConfigParser
 except:
