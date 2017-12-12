@@ -36,8 +36,6 @@ try:
     reload
 except NameError:
     # py3k has unicode by default
-    unicode('data/*.dec', errors='ignore')
-    unicode('data/*.enc', errors='ignore')
     pass
 else:
     reload(sys).setdefaultencoding('utf-8')
