@@ -44,7 +44,7 @@ except NameError:
 else:
     f = []
     for (dirpath, dirnames, filenames) in os.walk('data/'):
-      codecs.open(dirpath +  filenames, errors='ignore')
+      codecs.open(dirpath + filenames, errors='ignore')
       break
     reload(sys).setdefaultencoding('utf-8')
 try:
