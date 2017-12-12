@@ -29,7 +29,6 @@ import tensorflow as tf
 
 import data_utils
 import seq2seq_model
-import codecs
 
 # python2 and python3 support
 try:
