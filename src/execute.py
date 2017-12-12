@@ -38,13 +38,13 @@ except NameError:
     # py3k has unicode by default
     f = []
     for (dirpath, dirnames, filenames) in os.walk('data/'):
-      codecs.open(f.extend(filenames), errors='ignore')
+      codecs.open(dirpath + filenames, errors='ignore')
       break 
     pass
 else:
     f = []
     for (dirpath, dirnames, filenames) in os.walk('data/'):
-      codecs.open(f.extend(filenames), errors='ignore')
+      codecs.open(dirpath +  filenames, errors='ignore')
       break
     reload(sys).setdefaultencoding('utf-8')
 try:
