@@ -31,27 +31,40 @@ import tensorflow as tf
 import data_utils
 import seq2seq_model
 
-# python2 and python3 support
+# Rewrites files to UTF-8
 try:
-    reload
+  print('Rewriting files to UTF-8')
+  reload
 except NameError:
-    # py3k has unicode by default
-    f = []
-    for (dirpath, dirnames, filenames) in os.walk('data/'):
-      codecs.open(dirpath + filenames, errors='ignore')
-      break 
-    pass
+  # py3k doesn't need to set the default encoding.
+  for (dirpath, dirnames, filenames) in os.walk('data/'):
+    for filename in filenames:
+      content = ''
+
+      with codecs.open(dirpath + filename, 'r') as original:
+        content = original.read()
+
+      with codecs.open(dirpath + filename, 'w', 'utf-8') as reencoded:
+        reencoded.write(content)
+        
 else:
-    f = []
-    for (dirpath, dirnames, filenames) in os.walk('data/'):
-      codecs.open(dirpath + filenames, errors='ignore')
-      break
-    reload(sys).setdefaultencoding('utf-8')
+  for (dirpath, dirnames, filenames) in os.walk('data/'):
+    for filename in filenames:
+      content = ''
+
+      with codecs.open(dirpath + filename, 'r') as original:
+        content = original.read()
+
+      with codecs.open(dirpath + filename, 'w', 'utf-8') as reencoded:
+        reencoded.write(content)
+
+  reload(sys).setdefaultencoding('utf-8')
+
 try:
     from ConfigParser import SafeConfigParser
 except:
     from configparser import SafeConfigParser # In Python 3, ConfigParser has been renamed to configparser for PEP 8 compliance.
-    
+
 gConfig = {}
 
 def get_config(config_file='seq2seq.ini'):
