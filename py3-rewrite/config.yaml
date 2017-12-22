@@ -1,0 +1,5 @@
+prime: ' ' # Prime text.
+beam_width: 2 # Width of the beam for beam search.
+temperature: 1.0 # Sampling temperature. Lower is more conservative, default is 1.0 (neutral).
+relevance: 1.0 # Amount of "relevance masking/MMI (disabled by default):" higher is more pressure, 0.4 is probably as high as it can go without noticeably degrading coherence. Set to < 0 to disable relevance masking.
+max_length: 200 # Maximum length for generated text.

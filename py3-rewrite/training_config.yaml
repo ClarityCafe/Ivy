@@ -1,0 +1,13 @@
+data_dir: 'data/scotus' # Directory that contains input.txt, or input.bz2.
+save_dir: 'models/new_save' # Directory for checkpointed models (load from here if one is already present).
+rnn_size: 1500 # Size of RNN hidden state.
+num_layers: 4 # Number of layers in the RNN.
+model: gru # Network model to use. Either 'rnn', 'gru', or 'lstm'
+batch_size: 40 # Minibatch size.
+seq_length: 50 # RNN sequence length.
+num_epochs: 50 # Number of epochs.
+save_every: 1000 # Save frequency.
+grad_clip: 5 # Value to clip gradients at.
+learning_rate: 0.00006 # Learning rate.
+decay_rate: 0.95 # How much to decay the learning rate.
+decay_steps: 100000 # How often to decay the learning rate.

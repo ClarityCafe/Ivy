@@ -1,2 +1,5 @@
-
-*.pyc
+**/__pycache__
+**/data
+!**/data/scotus/scotus.bz2
+**/models
+!**/models/models-folder-readme.txt
