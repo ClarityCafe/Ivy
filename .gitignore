@@ -1,4 +1,5 @@
 **/__pycache__
+.vscode/
 **/data
 !**/data/scotus/scotus.bz2
 **/models
