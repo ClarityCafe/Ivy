@@ -196,17 +196,13 @@ class TextLoader:
 
         # Chop off the end of the data tensor so that the length of the data is a whole multiple of the (batch_size x seq_length) product.
         # Do this with the slice operator on the numpy array.
-        print(self.num_batches * self.batch_size * self.seq_length)
-        print(self.num_batches)
-        print(self.batch_size)
-        print(self.seq_length)
-        self.tensor = self.tensor[:self.num_batches * self.batch_size * self.seq_length]
+        self.tensor = self.tensor[:int(self.num_batches * self.batch_size * self.seq_length)]
 
         # Construct two numpy arrays to represent input characters (xdata) and target characters (ydata).
         # In training, we will feed in input characters one at a time, and optimize along a loss function computed against the target characters.
         # (We do this with batch_size characters at a time, in parallel.)
         # Since this is a sequence prediction net, the target is just the input right-shifted by 1.
-        xdata = self.data
+        xdata = self.tensor
         ydata = np.copy(self.tensor) # ydata starts as a copy of xdata
         ydata[:-1] = xdata[1:] # Right-shift y-data by 1 using the numpy array slice syntax.
         ydata[-1] = xdata[0] # Replace the very last character of y-data with the first character of the input data.
