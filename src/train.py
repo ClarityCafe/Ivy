@@ -136,6 +136,9 @@ for epoch in range(config.training.epochs):
             print(f'Epoch[{epoch}/{config.training.epochs}] step[{n_iter}/{n_step}] loss:{err}'
                   f' took:{time.time() - step_time:.5}s')
 
+        total_err += err
+        n_iter += 1
+
         # Test every 1000 steps
         if n_iter and n_iter % 1000 == 0:
             seeds = ['happy birthday have a nice day',
