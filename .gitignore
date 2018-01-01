@@ -1,6 +1,4 @@
 **/__pycache__
 .vscode/
-**/data
-!**/data/scotus/scotus.bz2
-**/models
-!**/models/models-folder-readme.txt
+src/output/*
+!**/.gitkeep
