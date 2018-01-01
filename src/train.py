@@ -1,3 +1,4 @@
+import numpy as np
 import tensorflow as tf
 import tensorlayer as tl
 import os.path as osp
@@ -97,7 +98,7 @@ for name, _ in utils.get_latest_trained_data(config.training.output_path):
     try:
         load_data = np.load(name)['params']
 
-        assign_params(sess, load_data, net)
+        tl.files.assign_params(sess, load_data, net)
         print(f'Successfully loaded checkpoint file "{name}"')
 
         break
@@ -186,6 +187,6 @@ for epoch in range(config.training.epochs):
           f'took:{time.time() - epoch_time:.5}s')
 
     if epoch % config.training.checkpoint_step == 0:
-        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}{epoch}.npz')
+        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}{epoch}.npz', sess=sess)
     else:
-        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}.npz')
+        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}.npz', sess=sess)
