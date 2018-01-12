@@ -1,4 +1,6 @@
 **/__pycache__
 .vscode/
-src/output/*
 !**/.gitkeep
+*.pkl
+*.npy
+*.npz
