@@ -1,10 +1,13 @@
 training:
-  data_path: 'nn_data/twitter' # Data folder to train from.
-  output_path: 'output/twitter' # Data to place training checkpoint data.
-  name_template: 'twitter' # File name to use as base for checkpoint files. Will have the epoch number appended to the end. e.g. "twitter" => "twitter0.npz", "twitter10.npz", ...
+  data_path: 'nn_data/monika' # Data folder to train from.
+  output_path: 'output/monika' # Data to place training checkpoint data.
+  name_template: 'monika' # File name to use as base for checkpoint files. Will have the epoch number appended to the end. e.g. "twitter" => "twitter0.npz", "twitter10.npz", ...
   checkpoint_step: 10 # How often to save a newly checkpointed file. These will have a number at the end of their filename, and won't override any existing 
   batch_size: 32 # Amount of data to load. Lower numbers can prevent OOM errors, but will increase loading time.
   epochs: 50 # Number of epochs to go through while training.
   embedding_size: 1024 # Number of embedding dimensions.
   learning_rate: 0.0001 # Rate at which to learn.
   reply_length: 30 # Maximum length of generated replies, in words.
+  seeds: # Sentences to test the network on while its training.
+    - 'Hello'
+    - 'How are you today?'

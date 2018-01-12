@@ -37,11 +37,11 @@ unk_id = word2index['unk']
 pad_id = word2index['_']
 
 start_id = xvocab_size
-end_id = start_id + 1
+end_id = xvocab_size + 1
 
 word2index.update({'start_id': start_id, 'end_id': end_id})
 
-index2word = index2word + ['start_id', 'end_id']
+index2word += ['start_id', 'end_id']
 xvocab_size = yvocab_size = xvocab_size + 2
 
 """ A data for Seq2Seq should look like this:
@@ -133,19 +133,15 @@ for epoch in range(config.training.epochs):
             target_mask: _target_mask
         })
 
-        if n_iter % 200 == 0:
-            print(f'Epoch[{epoch}/{config.training.epochs}] step[{n_iter}/{n_step}] loss:{err}'
-                  f' took:{time.time() - step_time:.5}s')
+        print(f'Epoch[{epoch}/{config.training.epochs}] step[{n_iter}/{n_step}] loss:{err}'
+              f' took:{time.time() - step_time:.5}s')
 
         total_err += err
         n_iter += 1
 
         # Test every 1000 steps
-        if n_iter and n_iter % 1000 == 0:
-            seeds = ['happy birthday have a nice day',
-                     'donald trump won last nights presidential debate according to snap online polls']
-
-            for seed in seeds:
+        if n_iter and n_iter % 1000 == 0 or n_iter == n_step:
+            for seed in config.training.seeds:
                 print(f'Query > "{seed}"')
 
                 seed_id = [word2index[w] for w in seed.split(' ')]
@@ -187,6 +183,8 @@ for epoch in range(config.training.epochs):
           f'took:{time.time() - epoch_time:.5}s')
 
     if epoch % config.training.checkpoint_step == 0:
-        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}{epoch}.npz', sess=sess)
+        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}{epoch}.npz',
+                          sess=sess)
     else:
-        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}.npz', sess=sess)
+        tl.files.save_npz(net.all_params, f'{config.training.output_path}/{config.training.name_template}.npz',
+                          sess=sess)
