@@ -52,7 +52,6 @@ def filter_data(seqs):
     raw_data_len = len(seqs) // 2
 
     for i in range(0, len(seqs), 2):
-        print(i)
         qlen = len(seqs[i].split(' '))
         alen = len(seqs[i - 1].split(' '))
 
