@@ -1,13 +1,34 @@
+general:
+  train: true  # Whether to train the model or not.
+  create_dataset: false  # If true, the program will only generate the dataset from the corpus, without training or testing.
+  verbose: false  # When testing, will plot the outputs at the same time as they are computed.
+  debug: false  # Runs the bot with Tensorflow's debug mode enabled.
+  keep_all: false  # If true, all saved models will be kept (make sure you havee enough free disk space, or increase the value of training.save_interval).
+  model_tag: ''  # Tag to differentiate which model to save or load.
+  root_dir: './'  # Folder where to look for models and data.
+  device: 'gpu'  # Device to run the model on. Either 'gpu' or 'cpu'.
+  seed: 0  # Random seed for replication.
+  reset: false
+  auto_encode: false
+
+dataset:
+  corpus: 'monika'  # Corpus from which to extract dataset from.
+  max_length: 10  # Maximum length of the sentence for input and output. 
+  filter_vocab: 1  # Remove rarely used words (by default, words used only once). 0 to keep all words.
+  dataset_ratio: 1.0  # Ratio of dataset used to avoid using the whole dataset.
+  vocabulary_size: 40000  # Limit the number of words in the vocabulary (0 for unlimited).
+
+network:
+  hidden_size: 512  # Number of hidden units in each RNN cell.
+  num_layers: 2  # Number of RNN layers.
+  softmax_samples: 0  # 
+  init_embeddings: false  #
+  embedding_size: 64  #
+  embedding_source: 'GoogleNews-vectors-negative300.bin'
+
 training:
-  data_path: 'nn_data/monika' # Data folder to train from.
-  output_path: 'output/monika' # Data to place training checkpoint data.
-  name_template: 'monika' # File name to use as base for checkpoint files. Will have the epoch number appended to the end. e.g. "twitter" => "twitter0.npz", "twitter10.npz", ...
-  checkpoint_step: 10 # How often to save a newly checkpointed file. These will have a number at the end of their filename, and won't override any existing 
-  batch_size: 32 # Amount of data to load. Lower numbers can prevent OOM errors, but will increase loading time.
-  epochs: 50 # Number of epochs to go through while training.
-  embedding_size: 1024 # Number of embedding dimensions.
-  learning_rate: 0.0001 # Rate at which to learn.
-  reply_length: 30 # Maximum length of generated replies, in words.
-  seeds: # Sentences to test the network on while its training.
-    - 'Hello'
-    - 'How are you today?'
+  epochs: 30  # Maximum number of epochs to run through.
+  save_interval: 2000  # Number of mini-batch steps before creat ing a model checkpoint.
+  batch_size: 256  # Mini-batch size. Increasing this may increase loading times, but have a larger chance of running out of memory. Decreasing this will have the inverse effect.
+  learning_rate: 0.002  # Learning rate for the network.
+  dropout: 0.9  # Dropout rate.
