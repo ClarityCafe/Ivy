@@ -11,15 +11,11 @@ FILENAME = 'monika-script.txt'
 UNK = 'unk'
 VOCAB_SIZE = 6000
 LIMIT = {
-    'maxq': 20,
-    'minq': 0,
-    'maxa': 20,
-    'mina': 3
+    'maxq': 25,
+    'minq': 2,
+    'maxa': 25,
+    'mina': 2
 }
-
-
-def ddefault():
-    return 1
 
 
 def read_lines(filename):
