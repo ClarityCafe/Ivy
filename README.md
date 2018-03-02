@@ -1,23 +1,7 @@
-## Rebecca
+# Libitina
 
-This is the fallback service for Monika if the Dialogflow service goes down.
-
-It's a simple Tensorflow chatbot capable of learning from user context.
-
-### Requirements
-
-You need the following to run Rebecca : 
-
-- setuptools
-- [Tensorflow 1.0 or Later](https://www.tensorflow.org/) **TODO: Makie it compliant to latest Tensorflow
-- numpy
-- scipy
-- six
-
-To prep the bot, go ahead and change the ``seq2seq.ini`` mode field to ``train``. To test the bot, set mode to
-``test``.
+This is a new implementation of Libitina, that uses a combination of [lukaslabs/cakechat](https://github.com/lukalabs/cakechat) and [collab-uniba/Emotion_and_Polarity_SO](https://github.com/collab-uniba/Emotion_and_Polarity_SO) (or emotxt).
 
 ### Copyright
 
-Contains code from Brain Walker licensed under MIT. Copyright (c) 2017.
-
+Contains code from LukasLab, licensed under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0), and code from the Collaborative Development Group (collab-uniba), license unspecified.
