@@ -1,6 +1,6 @@
 # Libitina
 
-This is a new implementation of Libitina, that uses a combination of [lukaslabs/cakechat](https://github.com/lukalabs/cakechat) and [collab-uniba/Emotion_and_Polarity_SO](https://github.com/collab-uniba/Emotion_and_Polarity_SO) (or emotxt).
+This is a new implementation of Libitina, that uses a combination of a Python 3.6 port of [lukaslabs/cakechat](https://github.com/lukalabs/cakechat) and Martmists' ground-up emotional analysis engine.
 
 ### Copyright
 
