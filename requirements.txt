@@ -1,0 +1,5 @@
+werkzeug
+flask
+flask_limiter
+tensorflow
+nltk

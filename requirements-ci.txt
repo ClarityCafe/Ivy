@@ -1,0 +1,9 @@
+snekchek
+flake8
+flake8-tidy-imports
+flake8-string-format
+flake8-bugbear
+flake8-bandit
+pylint
+vulture
+isort
