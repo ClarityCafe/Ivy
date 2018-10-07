@@ -1,3 +1,3 @@
-#!/usr/bin/python3
+#!/usr/bin/env bash
 
-PYTHONPATH="$PYTHONPATH:ChatLearner/" python main.py
+PYTHONPATH="$PYTHONPATH:ChatLearner/" python3 main.py

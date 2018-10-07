@@ -17,9 +17,9 @@ class Chatbot(RouteCog):
 
         self.sessions = set()
 
-        corp_dir = "resources/chatbot/corpus"
-        knbs_dir = "resources/chatbot/knowledgebase"
-        res_dir = "resources/chatbot/result"
+        corp_dir = "resources/chatbot/corpus/"
+        knbs_dir = "resources/chatbot/knowledgebase/"
+        res_dir = "/home/mart/git/Ivy/resources/chatbot/result/"
 
         with tf.Session() as sess:
             self.bot = BotPredictor(sess, corpus_dir=corp_dir,
@@ -37,13 +37,11 @@ class Chatbot(RouteCog):
     def session(self) -> str:
         return self.new_session()
 
-    @route("/api/chatbot/query")
+    @route("/api/chatbot/query", methods=["POST"])
     @json
     def query(self) -> str:
-        session_id = request.args.get("session_id")
-        message = request.args.get("message")
-
-        # TODO: POST request?
+        session_id = request.form.get("session_id")
+        message = request.form.get("message")
 
         if any(x is None for x in (session_id, message)):
             abort(400, "Both 'session_id' and 'message' have to be passed as URL parameters.")
