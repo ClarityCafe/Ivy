@@ -11,7 +11,14 @@ before_install:
 
 install:
   - snekchek
+  - git clone https://github.com/ProjectMonika/Fern
+  - cp -vRf Fern/Corpus/* resources/corpus && cp -vRf Fern/KnowledgeBase resources/knowledgebase
+  - python setup.py
 
+script:
+  - echo "Mart send API Docs kthnx"
+    exit 0;
+  
 cache:
   - pip
 
