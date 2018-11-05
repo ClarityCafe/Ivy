@@ -12,7 +12,7 @@ before_install:
 install:
 #  - snekchek
   - git clone https://github.com/ProjectMonika/Fern
-  - cp -vRf Fern/Corpus/* resources/corpus && cp -vRf Fern/KnowledgeBase resources/knowledgebase
+  - cp -vRf Fern/Corpus/* resources/chatbot/corpus && cp -vRf Fern/KnowledgeBase resources/chatbot/knowledgebase
   - python setup.py
 
 script:
