@@ -14,7 +14,7 @@ install:
 #  - snekchek
   - git clone https://github.com/ProjectMonika/Fern
   - cp -vRf Fern/Corpus/* resources/chatbot/corpus && cp -vRf Fern/KnowledgeBase resources/chatbot/knowledgebase
-  - ./setup.sh
+  - travis_wait 60 ./setup.sh
 
 script:
   - echo "Mart send API Docs kthnx"
