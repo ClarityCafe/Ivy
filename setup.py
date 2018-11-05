@@ -1,3 +1,9 @@
+if "CI" in os.environ:
+    import sys
+    sys.path.insert(0, "ChatLearner/chatbot/")
+    
+    from bottrainer import BotTrainer
+
 from ChatLearner.chatbot.bottrainer import BotTrainer
 
 corpus_dir = "resources/chatbot/corpus"
