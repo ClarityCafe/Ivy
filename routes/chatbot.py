@@ -1,4 +1,5 @@
 import re
+from urllib.parse import unquote
 
 from flask import request, abort, jsonify
 
@@ -35,13 +36,14 @@ class Chatbot(RouteCog):
     @route("/api/chatbot/session")
     @json
     def session(self) -> str:
-        return jsonify(self.new_session())
+        session_id = self.new_session()
+        return jsonify(session_id)
 
     @route("/api/chatbot/query", methods=["POST"])
     @json
     def query(self) -> str:
-        session_id = request.json.get("session_id") or request.args.get("session_id")
-        message = request.json.get("message") or request.args.get("message")
+        session_id = request.json.get("session_id") or unquote(request.args.get("session_id"))
+        message = request.json.get("message") or unquote(request.args.get("message"))
 
         if any(x is None for x in (session_id, message)):
             abort(400, "Both 'session_id' and 'message' have to be passed as URL parameters.")
@@ -49,9 +51,11 @@ class Chatbot(RouteCog):
         if session_id not in self.sessions:
             abort(403, f"{session_id} is not a valid session ID.")
 
-            # HACK: JSONifed respose, I don't know if this has the "message" field.
-        return jsonify(re.sub(r'_nl_|_np_', '\n',
-                      self.bot.predict(session_id, message)).strip())
+        # HACK: JSONifed respose, I don't know if this has the "message" field.
+        message = re.sub(r'_nl_|_np_', '\n',
+                      self.bot.predict(session_id, message)).strip()
+
+        return jsonify(message)
 
 
 def setup(core: Ivy):
