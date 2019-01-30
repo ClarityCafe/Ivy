@@ -19,7 +19,7 @@ class Chatbot(RouteCog):
 
         corp_dir = "resources/chatbot/corpus/"
         knbs_dir = "resources/chatbot/knowledgebase/"
-        res_dir = "/home/mart/git/Ivy/resources/chatbot/result/"
+        res_dir = "resources/chatbot/result/"
 
         with tf.Session() as sess:
             self.bot = BotPredictor(sess, corpus_dir=corp_dir,
