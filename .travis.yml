@@ -1,4 +1,10 @@
 language: python
+dist: xenial
+
+addons:
+  apt:
+    packages:
+      - unrar
 
 python:
   - "3.5"
@@ -12,14 +18,13 @@ before_install:
 
 install:
 #  - snekchek
-  - git clone https://github.com/ProjectMonika/Fern
-  - cp -vRf Fern/Corpus/* resources/chatbot/corpus && cp -vRf Fern/KnowledgeBase resources/chatbot/knowledgebase
-  - travis_wait 60 ./setup.sh
+   - "echo uwu"
+   - wget https://www.dropbox.com/s/ns5hkwxt1yrmawd/papaya.rar?dl=1 && unrar x papaya.rar
 
 script:
   - echo "Mart send API Docs kthnx"
     exit 0;
-  
+
 cache:
   - pip
 
