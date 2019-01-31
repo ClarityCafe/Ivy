@@ -2,7 +2,7 @@ FROM python:3.6-alpine
 
 USER root
 
-RUN apk add --no-cache --virtual .build-deps g++  libffi-dev openssl-dev && \
+RUN apk add --no-cache --virtual .build-deps g++ libffi-dev openssl-dev && \
     pip install --upgrade pip setuptools && \
     mkdir -p /app && \
     chmod g+rw /app;
