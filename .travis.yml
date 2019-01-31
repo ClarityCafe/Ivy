@@ -9,7 +9,7 @@ addons:
 python:
   - "3.5"
   - "3.6"
-  #- "3.7"  # no wheels yet
+  - "3.7"
 
 before_install:
   - pip install -r requirements.txt
@@ -18,12 +18,14 @@ before_install:
 
 install:
 #  - snekchek
-   - "echo uwu"
+   - docker build -t claritymoe/ivy:latest -f mountedModel.Dockerfile
    - wget -O papaya.rar https://www.dropbox.com/s/ns5hkwxt1yrmawd/papaya.rar?dl=1 && unrar x papaya.rar
+   - mkdir -p resources/result && cp -vRf Trained_Papaya6/Result/* resources/result
+   - docker build -t claritymoe/ivy:pretrained -f withModel.Dockerfile
 
 script:
-  - echo "Mart send API Docs kthnx"
-    exit 0;
+  - docker -d run claritymoe/ivy:pretrained
+  - curl 127.0.0.1:444/api/chatbot/session
 
 cache:
   - pip
