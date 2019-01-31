@@ -9,7 +9,7 @@ addons:
 python:
   - "3.5"
   - "3.6"
-  - "3.7"
+ # - "3.7" # TF wheels don't exist for 3.7
 
 before_install:
   - pip install -r requirements.txt
